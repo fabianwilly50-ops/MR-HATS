@@ -1,5 +1,12 @@
 import { supabase } from '@/lib/supabase';
 
+type ProductRow = {
+  legacy_id: string;
+  brand: string;
+  name: string;
+  price: number;
+};
+
 // Fase W0: solo verifica la conexión — cuenta productos en `products` e
 // `inventory`, y lista los primeros 5 nombres. Nada de Home/Catálogo/Carrito
 // todavía (eso es W1+).
@@ -12,11 +19,13 @@ export default async function W0TestPage() {
     .from('inventory')
     .select('*', { count: 'exact', head: true });
 
-  const { data: sample, error: sampleError } = await supabase
+  const { data: sampleData, error: sampleError } = await supabase
     .from('products')
     .select('legacy_id, brand, name, price')
     .order('page', { ascending: true })
     .limit(5);
+
+  const sample: ProductRow[] = sampleData ?? [];
 
   const error = productsError || inventoryError || sampleError;
 
