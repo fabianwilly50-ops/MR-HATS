@@ -1,6 +1,10 @@
 import type { ReactNode } from 'react';
+import './globals.css';
 
-export const metadata = { title: 'MR Hats — W0 test' };
+export const metadata = {
+  title: 'MR Hats — Gorras con carácter',
+  description: 'Descubre la selección MR Hats.',
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
