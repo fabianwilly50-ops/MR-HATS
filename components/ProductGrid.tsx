@@ -12,7 +12,7 @@ export function ProductGrid({ products, error }: { products: ProductRow[]; error
       </div>
       {error ? (
         <div className="state-message">
-          <strong>La selección está descansando.</strong>
+          <strong>Error: {error}</strong>
           <span>Vuelve a intentarlo en un momento.</span>
         </div>
       ) : products.length === 0 ? (
